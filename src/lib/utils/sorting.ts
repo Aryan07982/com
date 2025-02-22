@@ -1,3 +1,14 @@
+// Define a type for the rewards
+export interface Reward {
+  id: number;
+  name: string;
+  points: number;
+  rating: number;
+  reviews: number;
+  // Add other properties as needed
+}
+
+// Define the sort options
 export type SortOption = {
   label: string;
   value: string;
@@ -11,17 +22,10 @@ export const sortOptions: SortOption[] = [
   { label: "Most Popular", value: "popular" }
 ];
 
-// Define the shape of a reward item
-export interface RewardItem {
-  points: number;
-  rating: number;
-  reviews: number;
-  [key: string]: any; // For any additional properties
-}
+// Update the sortRewards function to use the Reward type
+export const sortRewards = (rewards: Reward[], sortBy: string): Reward[] => {
+  const sortedRewards = [...rewards]; // Create a copy to avoid mutating original array
 
-export const sortRewards = (rewards: RewardItem[], sortBy: string): RewardItem[] => {
-  const sortedRewards = [...rewards];
-  
   switch (sortBy) {
     case "points-asc":
       return sortedRewards.sort((a, b) => a.points - b.points);
