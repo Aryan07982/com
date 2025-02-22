@@ -1,5 +1,19 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { sortOptions } from "@/lib/utils/sorting";
+
+// Define a type for the sort options
+interface SortOption {
+  value: string;
+  label: string;
+}
+
+// Define the sort options array with the specified type
+const sortOptions: SortOption[] = [
+  { value: 'price_asc', label: 'Price: Low to High' },
+  { value: 'price_desc', label: 'Price: High to Low' },
+  { value: 'name_asc', label: 'Name: A to Z' },
+  { value: 'name_desc', label: 'Name: Z to A' },
+  // Add more sort options as needed
+];
 
 interface SortingSectionProps {
   sortBy: string;
